@@ -1,0 +1,16 @@
+.handlee-regular {
+    font-family: "Handlee", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+.line-break{
+    border: 1px solid gray;
+}
+.active{
+    background-color: #FDE047 ;
+    border-width: 2px;
+    --tw-border-opacity: 1;
+    border-color: rgb(0 0 0 / var(--tw-border-opacity));
+    box-shadow: rgba(0, 0, 0, 0) -5px 5px,
+            rgba(0, 0, 0, 0) -10px 10px, rgba(0, 0, 0, 1) -3px 3px;
+}

@@ -1,5 +1,5 @@
 import './App.css'
-import TopBar from './components/User/TopBar/TopBar'
+import Home from './pages/User/Home'
 import SignUp from './pages/User/SignUp'
 
 
@@ -9,7 +9,8 @@ function App() {
   return (
     <>
       
-      <TopBar/>
+      <Home/>
+      
     </>
   )
 }
