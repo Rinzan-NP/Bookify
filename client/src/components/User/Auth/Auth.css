@@ -2,8 +2,12 @@
     #arrow {
         display: none;
     }
+    #right-image {
+        display: none;
+    }
+    
 }
-@media only screen and (max-width: 820px) {
+@media only screen and (max-width: 1200px) {
     #bookify {
         width: 150px;
     }
@@ -12,24 +16,34 @@
         display: none;
     }
 }
-.box-shadow {
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
-        rgba(0, 0, 0, 0.22) 0px 15px 12px;
-}
+
 @media only screen and (min-width: 1200px) {
     .pos {
         position: relative;
-        bottom: 5rem;
+        bottom: 10rem;
     }
-    .top-bar{
+    #top-bar {
         padding-left: 4rem;
     }
+    .boxes-shadow {
+        box-shadow: rgba(0, 0, 0, 0) -5px 5px,
+            rgba(0, 0, 0, 0) -10px 10px, rgba(0, 0, 0, .6) -8px 8px;
+           
+    }
 }
+
 @media only screen and (max-width: 1200px) {
     .pos {
         position: relative;
         top: 3rem;
     }
 }
-
-/* /---#FFDD5D */
+#arrow {
+    z-index: 100;
+}
+.login-box {
+    z-index: 101;
+}
+body {
+    overflow: hidden;
+  }
