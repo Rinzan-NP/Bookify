@@ -4,9 +4,10 @@ import "../Sidebar/SideBar.css";
 const SideNavBar = () => {
     return (
         <>
-            <div className="bg-[#fefff0]  border-solid border-4 border-black p-12 rounded-2xl ">
+            {/* Pcs */}
+            <div className="bg-[#fefff0]  border-solid border-4 border-black p-12 rounded-2xl pades pc ">
                 <div className="flex">
-                    <div>
+                    <div className="">
                         <svg
                             width="75"
                             height="75"
@@ -78,21 +79,99 @@ const SideNavBar = () => {
                             />
                         </svg>
                     </div>
-                    <div className="font-bold text-2xl handlee-regular flex justify-center items-center ml-6">
-                        Rinzan
+                    <div className="font-bold text-2xl handlee-regular flex justify-center items-center ml-6 ">
+                        <span className="">Rinzan</span>
                     </div>
                 </div>
                 <br />
-                <hr className="line-break" />
+                <hr className="line-break " />
                 <div>
-                    <div className="flex justify-center items-center mt-3 gap-4">
-                        <button  className="flex  items-center gap-4 active py-2 px-4 rounded-lg w-full">
-                            {" "}
-                            <i class="fi fi-rs-house-blank"></i>
-                            <span className="font-semibold handlee-regular">
+                    <div className="flex justify-center items-center mt-4 gap-4">
+                        <button className="flex items-center gap-4 border-l-2 border-b-2 py-2 px-4 rounded-lg w-full overflow-hidden relative transition-all duration-300 ease-in-out hover:border-black transform hover:scale-y-110 hover:scale-x-110 active">
+                            <i className="fi fi-rs-house-blank"></i>
+                            <span className="font-semibold handlee-regular ">
                                 Home
                             </span>
+                            <div className="absolute inset-0 border-l-2 border-b-2 border-transparent transition-all duration-300 ease-in-out hover:border-black"></div>
                         </button>
+                    </div>
+                    <div className="flex justify-center items-center mt-4 gap-4">
+                        <button className="flex items-center gap-4 border-l-2 border-b-2 py-2 px-4 rounded-lg w-full overflow-hidden relative transition-all duration-300 ease-in-out hover:border-black transform hover:scale-y-110 hover:scale-x-110">
+                            <i className="fi fi-rs-bell"></i>
+                            <span className="font-semibold handlee-regular ">
+                                Notification
+                            </span>
+                            <div className="absolute inset-0 border-l-2 border-b-2 border-transparent transition-all duration-300 ease-in-out hover:border-black"></div>
+                        </button>
+                    </div>
+                    <div className="flex justify-center items-center mt-4 gap-4">
+                        <button className="flex items-center gap-4 border-l-2 border-b-2 py-2 px-4 rounded-lg w-full overflow-hidden relative transition-all duration-300 ease-in-out hover:border-black transform hover:scale-y-110 hover:scale-x-110">
+                            <i class="fi fi-rr-messages"></i>
+                            <span className="font-semibold handlee-regular ">
+                                Message
+                            </span>
+                            <div className="absolute inset-0 border-l-2 border-b-2 border-transparent transition-all duration-300 ease-in-out hover:border-black"></div>
+                        </button>
+                    </div>
+                    <div className="flex justify-center items-center mt-4 gap-4">
+                        <button className="flex items-center gap-4 border-l-2 border-b-2 py-2 px-4 rounded-lg w-full overflow-hidden relative transition-all duration-300 ease-in-out hover:border-black transform hover:scale-y-110 hover:scale-x-110">
+                            <i className="fi fi-rr-bookmark"></i>
+                            <span className="font-semibold handlee-regular ">
+                                Bookmark
+                            </span>
+                            <div className="absolute inset-0 border-l-2 border-b-2 border-transparent transition-all duration-300 ease-in-out hover:border-black"></div>
+                        </button>
+                    </div>
+                    <div className="flex justify-center items-center mt-4 gap-4">
+                        <button className="flex items-center gap-4 border-l-2 border-b-2 py-2 px-4 rounded-lg w-full overflow-hidden relative transition-all duration-300 ease-in-out hover:border-black transform hover:scale-y-110 hover:scale-x-110">
+                            <i className="fi fi-rr-shopping-bag"></i>
+                            <span className="font-semibold handlee-regular ">
+                                Shop
+                            </span>
+                            <div className="absolute inset-0 border-l-2 border-b-2 border-transparent transition-all duration-300 ease-in-out hover:border-black "></div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {/* Tab */}
+            <div className="tab">
+                <div className="bg-[#fefff0]  border-solid border-4 border-black p-8 rounded-2xl pades ">
+                    <div>
+                        <div className="flex justify-center items-center mt-4 gap-4">
+                            <button className="flex items-center gap-4 border-l-2 border-b-2 py-2 px-4 rounded-lg w-full overflow-hidden relative transition-all duration-300 ease-in-out hover:border-black transform hover:scale-y-110 hover:scale-x-110 active">
+                                <i className="fi fi-rs-house-blank"></i>
+
+                                <div className="absolute inset-0 border-l-2 border-b-2 border-transparent transition-all duration-300 ease-in-out hover:border-black"></div>
+                            </button>
+                        </div>
+                        <div className="flex justify-center items-center mt-4 gap-4">
+                            <button className="flex items-center gap-4 border-l-2 border-b-2 py-2 px-4 rounded-lg w-full overflow-hidden relative transition-all duration-300 ease-in-out hover:border-black transform hover:scale-y-110 hover:scale-x-110">
+                                <i className="fi fi-rs-bell"></i>
+
+                                <div className="absolute inset-0 border-l-2 border-b-2 border-transparent transition-all duration-300 ease-in-out hover:border-black"></div>
+                            </button>
+                        </div>
+                        <div className="flex justify-center items-center mt-4 gap-4">
+                            <button className="flex items-center gap-4 border-l-2 border-b-2 py-2 px-4 rounded-lg w-full overflow-hidden relative transition-all duration-300 ease-in-out hover:border-black transform hover:scale-y-110 hover:scale-x-110">
+                                <i class="fi fi-rr-messages"></i>
+
+                                <div className="absolute inset-0 border-l-2 border-b-2 border-transparent transition-all duration-300 ease-in-out hover:border-black"></div>
+                            </button>
+                        </div>
+                        <div className="flex justify-center items-center mt-4 gap-4">
+                            <button className="flex items-center gap-4 border-l-2 border-b-2 py-2 px-4 rounded-lg w-full overflow-hidden relative transition-all duration-300 ease-in-out hover:border-black transform hover:scale-y-110 hover:scale-x-110">
+                                <i className="fi fi-rr-bookmark"></i>
+
+                                <div className="absolute inset-0 border-l-2 border-b-2 border-transparent transition-all duration-300 ease-in-out hover:border-black"></div>
+                            </button>
+                        </div>
+                        <div className="flex justify-center items-center mt-4 gap-4">
+                            <button className="flex items-center gap-4 border-l-2 border-b-2 py-2 px-4 rounded-lg w-full overflow-hidden relative transition-all duration-300 ease-in-out hover:border-black transform hover:scale-y-110 hover:scale-x-110">
+                                <i className="fi fi-rr-shopping-bag"></i>
+
+                                <div className="absolute inset-0 border-l-2 border-b-2 border-transparent transition-all duration-300 ease-in-out hover:border-black "></div>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

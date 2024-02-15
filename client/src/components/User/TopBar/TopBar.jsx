@@ -5,7 +5,7 @@ const TopBar = () => {
     return (
         <>
             <div className="h-20 w-full bg-[#FFDD5D] flex" id="topbar">
-                <div>
+                <div className="logo">
                     <Logo height="150px" width="150px" />
                 </div>
                 <div className="flex justify-center items-end">

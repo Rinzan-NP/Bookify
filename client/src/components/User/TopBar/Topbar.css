@@ -2,3 +2,14 @@
     #topbar{
         padding-left: 5rem;    }
 }
+/* Hide .tab above 992px */
+@media only screen and (max-width: 768px) {
+    .logo {
+        display: none;
+    }
+    #topbar{
+        justify-content: end;
+        padding-right: 3rem;
+    }
+    
+}
