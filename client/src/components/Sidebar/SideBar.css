@@ -14,26 +14,21 @@
     box-shadow: rgba(0, 0, 0, 0) -5px 5px,
             rgba(0, 0, 0, 0) -10px 10px, rgba(0, 0, 0, 1) -3px 3px;
 }
-@media only screen and (max-width: 1200px) {
-    .pc{
-        display: none;
-    }
-    
-}
+
 /*  below 768px */
 @media only screen and (max-width: 768px) {
-    .tab {
+    .pc{
         display: none;
     }
-    .pc{
+    .mobile-hide{
         display: none;
     }
 }
 
 /* Display .tab between 768px and 992px */
 @media only screen and (min-width: 769px) and (max-width: 992px) {
-    .tab {
-        display: block; /* or any other display property you want */
+    .paddings{
+        padding: 1rem;
     }
     .pc{
         display: none;
@@ -42,10 +37,8 @@
 
 /* Hide .tab above 992px */
 @media only screen and (min-width: 993px) {
-    .tab {
-        display: none;
+    .paddings{
+        padding: 4rem;
     }
-    .pc{
-        display: block;
-    }
+    
 }
