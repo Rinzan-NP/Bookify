@@ -1,12 +1,16 @@
 import React from "react";
 import Logo from "../../Logo";
 import "../TopBar/Topbar.css";
+import MobileNav from "../../Sidebar/MobileNav";
 const TopBar = () => {
     return (
         <>
             <div className="h-20 w-full bg-[#FFDD5D] flex" id="topbar">
-                <div className="logo">
+                <div className="pc-logo">
                     <Logo height="150px" width="150px" />
+                </div>
+                <div className="mobile-logo">
+                    <Logo height="100px" width="100px" />
                 </div>
                 <div className="flex justify-center items-end">
                     <svg

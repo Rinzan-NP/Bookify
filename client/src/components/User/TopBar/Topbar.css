@@ -4,12 +4,19 @@
 }
 /* Hide .tab above 992px */
 @media only screen and (max-width: 768px) {
-    .logo {
+    .pc-logo{
         display: none;
     }
     #topbar{
-        justify-content: end;
-        padding-right: 3rem;
+        
+        padding-right: 5rem;
     }
-    
+    .mobile-logo{
+        display: block;
+    }
+}
+@media only screen and (min-width: 769px) {
+    .mobile-logo{
+        display: none;
+    }
 }

@@ -2,6 +2,7 @@ import React from "react";
 import TopBar from "../../components/User/TopBar/TopBar";
 import SideNavBar from "../../components/Sidebar/SideNavBar";
 import "../User/User.css"
+import MobileNav from "../../components/Sidebar/MobileNav";
 
 const Home = () => {
     return (
@@ -10,6 +11,7 @@ const Home = () => {
             <div className="flex p-16 side">
                 <SideNavBar/>
             </div>
+            <MobileNav/>
 
         </>
     );

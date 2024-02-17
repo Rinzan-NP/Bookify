@@ -1,3 +1,4 @@
+@import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css');
 .handlee-regular {
     font-family: "Handlee", cursive;
     font-weight: 400;
@@ -23,6 +24,9 @@
     .mobile-hide{
         display: none;
     }
+    .mobile{
+        display: block;
+    }
 }
 
 /* Display .tab between 768px and 992px */
@@ -33,6 +37,9 @@
     .pc{
         display: none;
     }
+    .mobile{
+        display: none;
+    }
 }
 
 /* Hide .tab above 992px */
@@ -40,5 +47,11 @@
     .paddings{
         padding: 4rem;
     }
-    
+    .mobile{
+        display: none;
+    }
 }
+.custom-icon {
+    font-size: 18px; /* Adjust the size as needed */
+}
+  
