@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <>
             <TopBar />
-            <div className="flex p-16 side">
+            <div className="flex px-14 py-12 side">
                 <SideNavBar/>
             </div>
             <MobileNav/>
