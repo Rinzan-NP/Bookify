@@ -10,21 +10,21 @@ const Notification = () => {
         <>
             <TopBar />
             <div className="flex px-14 py-12 side gap-7">
-                <SideNavBar />
+                <div>
+                    <SideNavBar />
+                </div>
+
                 <div className="w-2/3" id="notificatio">
                     {" "}
                     {/* Set flex-1 for the original space */}
                     <Noti />
                 </div>
                 <div className="w-1/3 border-2 border-black" id="trending">
-                    {" "}
-                    {/* Set flex-2 for double the space */}
-                    hello
+                   das
                 </div>
             </div>
 
             <MobileNav />
-            dsadsa
         </>
     );
 };

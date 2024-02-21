@@ -7,7 +7,7 @@ const SideNavBar = () => {
     return (
         <>
             {/* Pcs and tab */}
-            <div className="bg-[#fefff0]  border-solid border-4 border-black paddings rounded-2xl pades mobile-hide">
+            <div className="bg-[#fefff0]  border-solid border-4 border-black paddings rounded-2xl pades mobile-hide ">
                 <div className="pc">
                     <div className="flex">
                         <div className="">
