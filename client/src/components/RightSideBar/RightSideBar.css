@@ -1,0 +1,11 @@
+.handlee-regular {
+    font-family: "Handlee", cursive;
+    font-style: normal;
+}
+@media only screen and (max-width: 886px) {
+    .show{
+        display: none;
+    }
+    
+}
+

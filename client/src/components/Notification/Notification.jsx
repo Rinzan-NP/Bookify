@@ -74,10 +74,10 @@ const Notification = () => {
                 <div className="profile-detail">
                     <div>
                         <p className="text-md font-bold text-gray-700">Cole</p>
-                        <p className="text-sm -mt-1 font-semibold text text-gray-600">
+                        <p className="text-xs -mt-1 font-semibold text text-gray-600">
                             @rinsdu
                         </p>
-                        <p className="text-sm -mt-1 font-semibold text text-gray-600">
+                        <p className="text-xs  font-semibold text text-gray-600">
                             You have been followed by hanso
                         </p>
                     </div>

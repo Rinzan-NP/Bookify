@@ -8,3 +8,14 @@
     font-weight: 900;
     font-style: normal;
 }
+@media only screen and (max-width: 515px) {
+    .xs-text{
+        font-size: 0.75rem !important;
+
+    }
+    .feature-paddings{
+        
+        padding-right: 0.5rem !important;
+        padding-left: 0.5rem !important;
+    }
+}

@@ -3,3 +3,20 @@
         padding-left: 2rem !important;
     }
 }
+
+@media only screen and (max-width: 769px) {
+    #notificatio{
+        width: 100% !important;
+    }
+    .mobile-hide{
+        display: none;
+    }
+    .paddings{
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+        
+    }
+    .gappings{
+        gap: 0px !important;
+    }
+}
