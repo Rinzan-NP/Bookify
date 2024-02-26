@@ -1,4 +1,6 @@
 
 # Bookify
 
-Social media application with react and django
+Social media application with react and django 
+
+Follows Microservice architecture
