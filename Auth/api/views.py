@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
+from .utils import send_account_activation_email
 
 
 class RegisterView(CreateAPIView):
@@ -17,12 +18,18 @@ class RegisterView(CreateAPIView):
             "message": "Account created successfully!",
             "status": status.HTTP_201_CREATED,
         }
+
+        user = User.objects.get(email=request.data.get("email"))
+        send_account_activation_email(
+            email=user.email, uid=user.id, username=user.username
+        )
+
         return response
 
 
 class LoginView(APIView):
     def post(self, request):
-        
+
         email = request.data.get("email")
         password = request.data.get("password")
 
@@ -37,7 +44,7 @@ class LoginView(APIView):
         if user.blocked:
             raise AuthenticationFailed("You are blocked by admin! Please contact admin")
         if not user.verified:
-           raise AuthenticationFailed("You are not verified") 
+            raise AuthenticationFailed("You are not verified")
 
         user = authenticate(username=email, password=password)
 
@@ -45,7 +52,7 @@ class LoginView(APIView):
             raise AuthenticationFailed("Invalid Password")
 
         refresh = RefreshToken.for_user(user)
-       
+
         refresh["username"] = str(user.username)
         refresh["is_superuser"] = user.is_superuser
 
@@ -56,3 +63,11 @@ class LoginView(APIView):
         }
 
         return Response(content, status=status.HTTP_200_OK)
+
+
+class VerifyAccount(APIView):
+    def post(self, request):
+        user = User.objects.get(id=request.data.get("id"))
+        user.verified = True
+        user.save()
+        return Response({"message": "Verified"},status=status.HTTP_202_ACCEPTED)

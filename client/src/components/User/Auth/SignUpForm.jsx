@@ -52,8 +52,11 @@ const SignUpForm = () => {
                     "http://127.0.0.1:8000/api/register/",
                     formData
                 );
-                if (response.status === 200) {
-                    alert("An email is sented to your registered email to verify")
+                console.log(response);
+                if (response.status === 201) {
+                    alert(
+                        "An email is sented to your registered email to verify"
+                    );
                     navigate("/login");
                 }
             } catch (error) {

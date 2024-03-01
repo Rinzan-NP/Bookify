@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "../Auth/Auth.css";
 import Logo from "../../Logo";
+import {useNavigate} from "react-router-dom"
 
 const LoginForm = () => {
+    const navigate = useNavigate()
+    const toRegister = () =>{
+        navigate("/register")
+
+    }
     return (
         <>
             <div className="min-h-screen bg-transparent">
@@ -263,7 +269,7 @@ const LoginForm = () => {
                                     </div>
                                 </div>
                                 <div className="flex justify-center">
-                                    <button className="mt-3 bg-[#FFDD5D] px-10 py-2 rounded-xl text-blue-800 font-semibold hover:bg-yellow-400">
+                                    <button className="mt-3 bg-[#FFDD5D] px-10 py-2 rounded-xl text-blue-800 font-semibold hover:bg-yellow-400" onClick={toRegister}>
                                         Register
                                     </button>
                                 </div>
