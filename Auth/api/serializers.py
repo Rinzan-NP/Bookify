@@ -11,7 +11,7 @@ class UserRegisterSerializer(ModelSerializer):
 
         model = User
         fields = [
-            "uid",
+            "id",
             "username",
             "email",
             "password",

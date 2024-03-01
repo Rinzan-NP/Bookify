@@ -45,7 +45,7 @@ class LoginView(APIView):
             raise AuthenticationFailed("Invalid Password")
 
         refresh = RefreshToken.for_user(user)
-        refresh["id"] = str(user.id)
+       
         refresh["username"] = str(user.username)
         refresh["is_superuser"] = user.is_superuser
 

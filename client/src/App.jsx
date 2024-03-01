@@ -1,19 +1,15 @@
-import './App.css'
-import Home from './pages/User/Home'
-import Notification from './pages/User/Notification'
-import SignUp from './pages/User/SignUp'
-import Messages from "./pages/User/Messages"
-
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import UserWrapper from "./Wrapper/UserWrapper";
 function App() {
-  
-
-  return (
-    <>
-      
-      <SignUp/>
-      
-    </>
-  )
+    return (
+        <Router>
+            <Routes>
+                <Route path="/*" element={<UserWrapper />}></Route>
+                
+            </Routes>
+        </Router>
+    );
 }
 
-export default App
+export default App;
