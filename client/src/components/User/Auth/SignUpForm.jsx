@@ -4,6 +4,8 @@ import Logo from "../../Logo";
 import axios from "axios";
 import Alert from "../../Alert";
 import { useNavigate } from "react-router-dom";
+import { useGoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
 
 const SignUpForm = () => {
     const navigate = useNavigate();
@@ -14,6 +16,32 @@ const SignUpForm = () => {
     });
 
     const [formError, setFormError] = useState();
+
+    const login = useGoogleLogin({
+        onSuccess: async (tokenResponse) => {
+            try {
+                const userInfo = await axios.get(
+                    "https://www.googleapis.com/oauth2/v3/userinfo",
+                    {
+                        headers: {
+                            Authorization: `Bearer ${tokenResponse.access_token}`,
+                        },
+                    }
+                );
+
+                if (userInfo.status == 200) {
+                    const data = {
+                        username: userInfo.data.given_name,
+                        email: userInfo.data.email,
+                    };
+                    const response = await axios.post();
+                    if(response.status == 200) {
+                        navigate('/login');
+                    }
+                }
+            } catch (error) {}
+        },
+    });
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -367,10 +395,16 @@ const SignUpForm = () => {
                                 </div>
                                 <div className="mt-4">
                                     <div className="flex justify-center gap-3">
-                                        <div className="flex justify-center items-center bg-blue-900 px-4 py-2 w-full rounded-lg text-[#FFDD5D] font-semibold hover:bg-blue-800">
-                                            <i className="fab fa-google"></i>
-                                            &nbsp; Google
-                                        </div>
+                                        <button
+                                            onClick={() => login()}
+                                            className="flex justify-center items-center bg-blue-900 px-4 py-2 w-full rounded-lg text-[#FFDD5D] font-semibold hover:bg-blue-800"
+                                        >
+                                            <div>
+                                                <i className="fab fa-google"></i>
+                                                &nbsp; Google
+                                            </div>
+                                        </button>
+
                                         <div className="flex justify-center items-center bg-blue-900 px-4 py-2 w-full rounded-lg text-[#FFDD5D] font-semibold hover:bg-blue-800">
                                             <i className="fab fa-facebook"></i>
                                             &nbsp; Facebook

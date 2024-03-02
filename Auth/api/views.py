@@ -65,9 +65,13 @@ class LoginView(APIView):
         return Response(content, status=status.HTTP_200_OK)
 
 
-class VerifyAccount(APIView):
+class VerifyAccountView(APIView):
     def post(self, request):
         user = User.objects.get(id=request.data.get("id"))
         user.verified = True
         user.save()
         return Response({"message": "Verified"},status=status.HTTP_202_ACCEPTED)
+    
+class GoogleLoginView(APIView):
+    def post(self, request):
+        
