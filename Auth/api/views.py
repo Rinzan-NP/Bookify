@@ -1,12 +1,12 @@
 from rest_framework.generics import CreateAPIView
 from rest_framework.exceptions import ParseError, AuthenticationFailed
-from .serializers import UserRegisterSerializer, User
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 from .utils import send_account_activation_email
+from .serializers import *
 
 
 class RegisterView(CreateAPIView):
@@ -25,6 +25,20 @@ class RegisterView(CreateAPIView):
         )
 
         return response
+
+
+def create_tokens(user):
+
+    refresh = RefreshToken.for_user(user)
+
+    refresh["username"] = str(user.username)
+    refresh["is_superuser"] = user.is_superuser
+    content = {
+        "refresh": str(refresh),
+        "access": str(refresh.access_token),
+        "isAdmin": user.is_superuser,
+    }
+    return content
 
 
 class LoginView(APIView):
@@ -51,16 +65,7 @@ class LoginView(APIView):
         if not user:
             raise AuthenticationFailed("Invalid Password")
 
-        refresh = RefreshToken.for_user(user)
-
-        refresh["username"] = str(user.username)
-        refresh["is_superuser"] = user.is_superuser
-
-        content = {
-            "refresh": str(refresh),
-            "access": str(refresh.access_token),
-            "isAdmin": user.is_superuser,
-        }
+        content = create_tokens(user)
 
         return Response(content, status=status.HTTP_200_OK)
 
@@ -70,8 +75,22 @@ class VerifyAccountView(APIView):
         user = User.objects.get(id=request.data.get("id"))
         user.verified = True
         user.save()
-        return Response({"message": "Verified"},status=status.HTTP_202_ACCEPTED)
-    
+        return Response({"message": "Verified"}, status=status.HTTP_202_ACCEPTED)
+
+
 class GoogleLoginView(APIView):
     def post(self, request):
-        
+        email = request.data.get("email")
+        user, created = User.objects.get_or_create(
+            email=email,
+            defaults={"verified": True},
+        )
+
+        if not created:
+            user.verified = True
+            user.username = request.data.get("username")
+            user.save()
+
+        content = create_tokens(user)
+
+        return Response(content, status=status.HTTP_200_OK)

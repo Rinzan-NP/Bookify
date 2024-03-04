@@ -27,3 +27,4 @@ class UserRegisterSerializer(ModelSerializer):
             return instance
         else:
             raise ValidationError({"password": "password is not valid"})
+

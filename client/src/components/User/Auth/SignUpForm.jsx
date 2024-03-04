@@ -3,7 +3,7 @@ import "../Auth/Auth.css";
 import Logo from "../../Logo";
 import axios from "axios";
 import Alert from "../../Alert";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 
@@ -34,12 +34,17 @@ const SignUpForm = () => {
                         username: userInfo.data.given_name,
                         email: userInfo.data.email,
                     };
-                    const response = await axios.post();
-                    if(response.status == 200) {
-                        navigate('/login');
+                    const response = await axios.post(
+                        "http://127.0.0.1:8000/api/google_login/",
+                        data
+                    );
+                    if (response.status == 200) {
+                        navigate("/");
                     }
                 }
-            } catch (error) {}
+            } catch (error) {
+                console.error(error);
+            }
         },
     });
 
@@ -80,7 +85,7 @@ const SignUpForm = () => {
                     "http://127.0.0.1:8000/api/register/",
                     formData
                 );
-                console.log(response);
+                
                 if (response.status === 201) {
                     alert(
                         "An email is sented to your registered email to verify"
@@ -394,27 +399,25 @@ const SignUpForm = () => {
                                     </button>
                                 </div>
                                 <div className="mt-4">
-                                    <div className="flex justify-center gap-3">
+                                    <div className="flex justify-around gap-3">
                                         <button
                                             onClick={() => login()}
-                                            className="flex justify-center items-center bg-blue-900 px-4 py-2 w-full rounded-lg text-[#FFDD5D] font-semibold hover:bg-blue-800"
+                                            
                                         >
-                                            <div>
+                                            <div className="flex justify-center items-center bg-blue-900 px-4 py-2 w-full rounded-lg text-[#FFDD5D] font-semibold hover:bg-blue-800">
                                                 <i className="fab fa-google"></i>
                                                 &nbsp; Google
                                             </div>
                                         </button>
-
-                                        <div className="flex justify-center items-center bg-blue-900 px-4 py-2 w-full rounded-lg text-[#FFDD5D] font-semibold hover:bg-blue-800">
-                                            <i className="fab fa-facebook"></i>
-                                            &nbsp; Facebook
-                                        </div>
+                                        <Link
+                                            className="flex justify-center "
+                                            to="/login"
+                                        >
+                                            <button className=" bg-[#FFDD5D] px-10 py-2 rounded-xl text-blue-800 font-semibold hover:bg-yellow-400 w-full">
+                                                Login?
+                                            </button>
+                                        </Link>
                                     </div>
-                                </div>
-                                <div className="flex justify-center">
-                                    <button className="mt-3 bg-[#FFDD5D] px-10 py-2 rounded-xl text-blue-800 font-semibold hover:bg-yellow-400">
-                                        Login?
-                                    </button>
                                 </div>
                             </div>
                         </div>
