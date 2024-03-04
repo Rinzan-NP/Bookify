@@ -1,11 +1,14 @@
 @media only screen and (min-width: 769px) and (max-width: 992px) {
     .side{
         padding-left: 2rem !important;
+        
+        
     }
+    
 }
 
 @media only screen and (max-width: 769px) {
-    #notificatio{
+    #middle_box{
         width: 100% !important;
     }
     .mobile-hide{
@@ -19,4 +22,23 @@
     .gappings{
         gap: 0px !important;
     }
+    .side{
+        padding: 1rem !important;
+    }
 }
+@media only screen and (min-width: 769px) {
+    .side{
+        gap: 1.7rem !important;
+    }
+
+}
+@media only screen and (max-width: 886px) {
+    #middle_boxs{
+        width: 100% !important;
+    }
+    .right-side-hide{
+        display: none;
+    }
+    
+}
+

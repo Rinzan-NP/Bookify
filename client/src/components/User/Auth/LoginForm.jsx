@@ -1,14 +1,46 @@
 import React, { useEffect, useState } from "react";
 import "../Auth/Auth.css";
 import Logo from "../../Logo";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import { useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
 
 const LoginForm = () => {
-    const navigate = useNavigate()
-    const toRegister = () =>{
-        navigate("/register")
+    const navigate = useNavigate();
+    const toRegister = () => {
+        navigate("/register");
+    };
 
-    }
+    const login = useGoogleLogin({
+        onSuccess: async (tokenResponse) => {
+            try {
+                const userInfo = await axios.get(
+                    "https://www.googleapis.com/oauth2/v3/userinfo",
+                    {
+                        headers: {
+                            Authorization: `Bearer ${tokenResponse.access_token}`,
+                        },
+                    }
+                );
+
+                if (userInfo.status == 200) {
+                    const data = {
+                        username: userInfo.data.given_name,
+                        email: userInfo.data.email,
+                    };
+                    const response = await axios.post(
+                        "http://127.0.0.1:8000/api/google_login/",
+                        data
+                    );
+                    if (response.status == 200) {
+                        navigate("/");
+                    }
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        },
+    });
     return (
         <>
             <div className="min-h-screen bg-transparent">
@@ -257,19 +289,18 @@ const LoginForm = () => {
                                     </button>
                                 </div>
                                 <div className="mt-4">
-                                    <div className="flex justify-center gap-3">
+                                    <div className="flex justify-center gap-3" onClick={() => login()}>
                                         <div className="flex justify-center items-center bg-blue-900 px-4 py-2 w-full rounded-lg text-[#FFDD5D] font-semibold hover:bg-blue-800">
-                                            <i className="fab fa-google"></i>&nbsp;
-                                            Google
-                                        </div>
-                                        <div className="flex justify-center items-center bg-blue-900 px-4 py-2 w-full rounded-lg text-[#FFDD5D] font-semibold hover:bg-blue-800">
-                                            <i className="fab fa-facebook"></i>
-                                            &nbsp; Facebook
+                                            <i className="fab fa-google"></i>
+                                            &nbsp; Google
                                         </div>
                                     </div>
                                 </div>
                                 <div className="flex justify-center">
-                                    <button className="mt-3 bg-[#FFDD5D] px-10 py-2 rounded-xl text-blue-800 font-semibold hover:bg-yellow-400" onClick={toRegister}>
+                                    <button
+                                        className="mt-3 bg-[#FFDD5D] px-10 py-2 rounded-xl text-blue-800 font-semibold hover:bg-yellow-400"
+                                        onClick={toRegister}
+                                    >
                                         Register
                                     </button>
                                 </div>

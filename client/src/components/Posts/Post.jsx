@@ -4,7 +4,7 @@ import "../Posts/Post.css";
 const Post = () => {
     return (
         <>
-            <div className="p-4  bg-[#fefff0]  border-solid border-4 border-black rounded-2xl w-full">
+            <div className="p-4 bg-[#fefff0]  border-solid border-b-2 border-black">
                 <div className="flex gap-4">
                     <div>
                         <svg

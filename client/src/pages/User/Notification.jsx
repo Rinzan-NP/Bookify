@@ -15,7 +15,7 @@ const Notification = () => {
                     <SideNavBar />
                 </div>
 
-                <div className="w-8/12" id="notificatio">
+                <div className="w-8/12" id="middle_box">
                     {" "}
                     {/* Set flex-1 for the original space */}
                     <Noti />
