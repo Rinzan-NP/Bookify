@@ -3,7 +3,7 @@ import TopBar from "../../components/User/TopBar/TopBar";
 import SideNavBar from "../../components/Sidebar/SideNavBar";
 import "../User/User.css";
 import MobileNav from "../../components/Sidebar/MobileNav";
-import Post from "../../components/Posts/Post";
+import Post from "../../components/Posts/Posts";
 import AddPost from "../../components/Posts/AddPost";
 import Admires from "../../components/RightSideBar/Admires";
 
@@ -15,16 +15,25 @@ const Home = () => {
                 <div>
                     <SideNavBar />
                 </div>
-                <div className="middle-box border-black border-4 p-5 rounded-xl w-8/12" id="middle_boxs">
+                <div
+                    className="middle-box border-black border-4 p-5 rounded-xl w-8/12"
+                    id="middle_boxs"
+                >
                     <div className="mobile-hide">
                         <AddPost />
                     </div>
                     <div>
                         <Post />
+                        <Post />
+                        <Post />
+                        <Post />
+                        <Post />
+                        <Post />
+                        <Post />
                     </div>
                 </div>
                 <div className="w-3/12 right-side-hide">
-                   <Admires/>
+                    <Admires />
                 </div>
             </div>
             <MobileNav />

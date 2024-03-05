@@ -3,7 +3,7 @@ import React from "react";
 const AddPost = () => {
     return (
         <>
-            <div className="">
+            <div className="mb-4">
                 <div className="border-black border-2 p-3 rounded-xl bg-gray-200">
                     <div className="bg-white p-3 rounded-xl flex gap-4">
                         <div className="bg-black h-16 w-16 rounded-xl p-5 flex items-center justify-center ">
@@ -75,10 +75,12 @@ const AddPost = () => {
                         </div>
                         <div className="flex items-center gap-5 post">
                             <div>
-                                <span className="font-bold text-sm">Post Later</span>
+                                <span className="font-bold text-sm">
+                                    Post Later
+                                </span>
                             </div>
                             <div className="bg-black rounded-3xl py-2 px-5 text-white text-sm font-semibold">
-Post
+                                Post
                             </div>
                         </div>
                     </div>
