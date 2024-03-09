@@ -1,0 +1,55 @@
+.handlee-regular {
+    font-family: "Handlee", cursive;
+    font-style: normal;
+}
+.mobile-profile {
+    display: none;
+}
+@media only screen and (max-width: 548px) {
+    .profile-pic {
+        display: none;
+    }
+    .mobile-profile {
+        display: block;
+    }
+}
+/* Profile.css */
+
+.user-posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+}
+
+.post {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.post img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.post-details {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 8px;
+    text-align: left;
+}
+
+.post-icons {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.post-icons span {
+    margin-right: 8px;
+}

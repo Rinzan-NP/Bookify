@@ -1,6 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { SignUp, Login, Home, Verify } from "../pages/index";
+import {
+    SignUp,
+    Login,
+    Home,
+    Verify,
+    Notification,
+    Message,
+    Profile,
+} from "../pages/index";
 
 const UserWrapper = () => {
     return (
@@ -9,6 +17,10 @@ const UserWrapper = () => {
             <Route path="/login" element={<Login />} />
             <Route exact path="/user/verify/:userId" element={<Verify />} />
             <Route exact path="/register/" element={<SignUp />} />
+
+            <Route exact path="/notification/" element={<Notification />} />
+            <Route exact path="/message/" element={<Message />} />
+            <Route exact path="/profile/" element={<Profile />} />
         </Routes>
     );
 };

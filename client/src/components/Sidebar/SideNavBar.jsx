@@ -1,6 +1,7 @@
 import React from "react";
 import "../Sidebar/SideBar.css";
 import MobileNav from "./MobileNav";
+import { Link, NavLink } from "react-router-dom";
 
 const SideNavBar = () => {
     
@@ -9,7 +10,7 @@ const SideNavBar = () => {
             {/* Pcs and tab */}
             <div className="bg-[#fefff0]  border-solid border-4 border-black paddings rounded-2xl pades mobile-hide ">
                 <div className="pc">
-                    <div className="flex">
+                    <Link to="/profile" className="flex">
                         <div className="">
                             <svg
                                 width="75"
@@ -85,56 +86,48 @@ const SideNavBar = () => {
                         <div className="font-bold text-2xl handlee-regular flex justify-center items-center ml-6 ">
                             <span className="">Rinzan</span>
                         </div>
-                    </div>
+                    </Link>
                 </div>
                 <br className="pc" />
                 <hr className="line-break pc" />
                 <div>
                     <div className="flex justify-center items-center mt-4 gap-4">
-                        <button className="flex items-center gap-4 border-l-2 border-b-2 py-2 px-4 rounded-lg w-full overflow-hidden relative transition-all duration-300 ease-in-out hover:border-black transform hover:scale-y-110 hover:scale-x-110 active">
+                        <NavLink to="/" className="flex items-center gap-4 border-l-2 border-b-2 py-2 px-4 rounded-lg w-full overflow-hidden relative transition-all duration-300 ease-in-out hover:border-black transform hover:scale-y-110 hover:scale-x-110">
                             <i className="fi fi-rs-house-blank"></i>
                             <span className="font-semibold handlee-regular pc">
                                 Home
                             </span>
                             <div className="absolute inset-0 border-l-2 border-b-2 border-transparent transition-all duration-300 ease-in-out hover:border-black"></div>
-                        </button>
+                        </NavLink>
                     </div>
                     <div className="flex justify-center items-center mt-4 gap-4">
-                        <button className="flex items-center gap-4 border-l-2 border-b-2 py-2 px-4 rounded-lg w-full overflow-hidden relative transition-all duration-300 ease-in-out hover:border-black transform hover:scale-y-110 hover:scale-x-110">
+                        <NavLink to="/notification/" className="flex items-center gap-4 border-l-2 border-b-2 py-2 px-4 rounded-lg w-full overflow-hidden relative transition-all duration-300 ease-in-out hover:border-black transform hover:scale-y-110 hover:scale-x-110">
                             <i className="fi fi-rs-bell"></i>
                             <span className="font-semibold handlee-regular pc">
                                 Notification
                             </span>
                             <div className="absolute inset-0 border-l-2 border-b-2 border-transparent transition-all duration-300 ease-in-out hover:border-black"></div>
-                        </button>
+                        </NavLink>
                     </div>
                     <div className="flex justify-center items-center mt-4 gap-4">
-                        <button className="flex items-center gap-4 border-l-2 border-b-2 py-2 px-4 rounded-lg w-full overflow-hidden relative transition-all duration-300 ease-in-out hover:border-black transform hover:scale-y-110 hover:scale-x-110">
+                        <NavLink to="/message/" className="flex items-center gap-4 border-l-2 border-b-2 py-2 px-4 rounded-lg w-full overflow-hidden relative transition-all duration-300 ease-in-out hover:border-black transform hover:scale-y-110 hover:scale-x-110">
                             <i className="fi fi-rr-messages"></i>
                             <span className="font-semibold handlee-regular pc">
                                 Message
                             </span>
                             <div className="absolute inset-0 border-l-2 border-b-2 border-transparent transition-all duration-300 ease-in-out hover:border-black"></div>
-                        </button>
+                        </NavLink>
                     </div>
                     <div className="flex justify-center items-center mt-4 gap-4">
-                        <button className="flex items-center gap-4 border-l-2 border-b-2 py-2 px-4 rounded-lg w-full overflow-hidden relative transition-all duration-300 ease-in-out hover:border-black transform hover:scale-y-110 hover:scale-x-110">
+                        <NavLink to="/bookmark" className="flex items-center gap-4 border-l-2 border-b-2 py-2 px-4 rounded-lg w-full overflow-hidden relative transition-all duration-300 ease-in-out hover:border-black transform hover:scale-y-110 hover:scale-x-110">
                             <i className="fi fi-rr-bookmark"></i>
                             <span className="font-semibold handlee-regular pc">
                                 Bookmark
                             </span>
                             <div className="absolute inset-0 border-l-2 border-b-2 border-transparent transition-all duration-300 ease-in-out hover:border-black"></div>
-                        </button>
+                        </NavLink>
                     </div>
-                    <div className="flex justify-center items-center mt-4 gap-4">
-                        <button className="flex items-center gap-4 border-l-2 border-b-2 py-2 px-4 rounded-lg w-full overflow-hidden relative transition-all duration-300 ease-in-out hover:border-black transform hover:scale-y-110 hover:scale-x-110">
-                            <i className="fi fi-rr-shopping-bag"></i>
-                            <span className="font-semibold handlee-regular pc">
-                                Shop
-                            </span>
-                            <div className="absolute inset-0 border-l-2 border-b-2 border-transparent transition-all duration-300 ease-in-out hover:border-black "></div>
-                        </button>
-                    </div>
+                    
                 </div>
             </div>
             

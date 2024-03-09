@@ -22,6 +22,7 @@ class MyAccountManager(BaseUserManager):
         user = self.model(email=self.normalize_email(email), username=username)
         user.set_password(password)
         user.save(using=self.db)
+        return user
 
     def create_superuser(self, username, email, password=None):
         user = self.create_user(username, email, password)
@@ -30,7 +31,6 @@ class MyAccountManager(BaseUserManager):
         user.is_superuser = True
         user.save(using=self._db)
         return user
-
 
 
 class User(AbstractBaseUser, BaseModel):
@@ -48,11 +48,21 @@ class User(AbstractBaseUser, BaseModel):
 
     def __str__(self):
         return self.email
-    
-    def full_name(self):
-        return f'{self.username}' 
-    
-    def has_perm(self, perm, obj = None):
-        return self.is_superuser
-    
 
+    def full_name(self):
+        return f"{self.username}"
+
+    def has_perm(self, perm, obj=None):
+        return self.is_superuser
+
+    def has_module_perms(self, add_label):
+        return True
+
+
+class BackgroundImage(models.Model):
+    name = models.CharField(max_length=50, null=True, blank=True)
+    image = models.ImageField(upload_to="background/")
+
+    def __str__(self) -> str:
+        return self.name
+    
