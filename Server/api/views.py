@@ -44,9 +44,11 @@ def create_tokens(user):
 class LoginView(APIView):
     def post(self, request):
 
+       
+
         email = request.data.get("email")
         password = request.data.get("password")
-
+        
         if not email or not password:
             raise ParseError("All Fields Are Required")
 
@@ -92,5 +94,4 @@ class GoogleLoginView(APIView):
             user.save()
 
         content = create_tokens(user)
-
         return Response(content, status=status.HTTP_200_OK)

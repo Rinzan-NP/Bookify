@@ -125,7 +125,7 @@ WSGI_APPLICATION = "core.wsgi.application"
 DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.postgresql',
-       'NAME': 'Bookify_auth',
+       'NAME': 'Bookify',
        'USER': 'postgres',
        'PASSWORD': 'root',
        'HOST': 'localhost',

@@ -7,24 +7,24 @@ import Post from "../../components/Posts/Posts";
 import AddPost from "../../components/Posts/AddPost";
 import Admires from "../../components/RightSideBar/Admires";
 import Postes from "../../components/Posts/Postes";
+import { useSelector } from "react-redux";
 
 const Home = () => {
-    const [data, setdata] = useState({})
-    useEffect(() =>{
+    const user = useSelector((state) => state.auth);
+    console.log(user);
+    const [data, setdata] = useState({});
+    useEffect(() => {
         fetchData();
     });
 
-    const fetchData = async () =>{
+    const fetchData = async () => {
         try {
-            const response  = await axios.get('http://127.0.0.1:8000/api/home/')
-        if (response.status == 200){
-            setdata(response)
-        }
-        } catch (error) {
-            
-        }
-        
-    }
+            const response = await axios.get("http://127.0.0.1:8000/api/home/");
+            if (response.status == 200) {
+                setdata(response);
+            }
+        } catch (error) {}
+    };
     return (
         <>
             <TopBar />
@@ -40,7 +40,7 @@ const Home = () => {
                         <AddPost />
                     </div>
                     <div>
-                        <Postes/>
+                        <Postes />
                     </div>
                 </div>
                 <div className="w-3/12 right-side-hide">

@@ -40,6 +40,7 @@ const SignUpForm = () => {
                     );
                     if (response.status == 200) {
                         navigate("/");
+                        
                     }
                 }
             } catch (error) {

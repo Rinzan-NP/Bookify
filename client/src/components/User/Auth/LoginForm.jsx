@@ -4,13 +4,23 @@ import Logo from "../../Logo";
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../../Redux/Authentication/UserSlice";
 
 const LoginForm = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const toRegister = () => {
         navigate("/register");
     };
-
+    const [formData, setFormData] = useState({
+        email: "",
+        password: "",
+    });
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setFormData({ ...formData, [name]: value });
+    };
     const login = useGoogleLogin({
         onSuccess: async (tokenResponse) => {
             try {
@@ -41,6 +51,26 @@ const LoginForm = () => {
             }
         },
     });
+    const onLogin = async () => {
+        try {
+            const response = await axios.post(
+                "http://127.0.0.1:8000/api/login/",
+                formData
+            );
+            if (response.status === 200) {
+                dispatch(
+                    setUser({
+                        user: "Rinzan",
+                        admin: true,
+                    })
+                );
+                navigate("/");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <>
             <div className="min-h-screen bg-transparent">
@@ -255,20 +285,28 @@ const LoginForm = () => {
                                         id="emailInput"
                                         className="w-full h-full px-3 py-3 font-sans text-sm font-normal transition-all bg-transparent border rounded-md peer text-blue-gray-700 outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 border-t-transparent focus:border-t-transparent border-blue-gray-200 focus:border-gray-900"
                                         placeholder=" "
+                                        value={formData.email}
+                                        name="email"
+                                        onChange={handleInputChange}
                                     />
                                     <label className="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[4.1] text-gray-500 peer-focus:text-gray-900 before:border-blue-gray-200 peer-focus:before:!border-gray-900 after:border-blue-gray-200 peer-focus:after:!border-blue-900">
                                         Email
                                     </label>
                                 </div>
-                                <div className="relative h-10 w-72 min-w-[200px]  bg-slate-50 mb-5">
-                                    <input
-                                        type="password"
-                                        className="peer h-full w-full rounded-[7px] border border-bg-blue-900 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-                                        placeholder=" "
-                                    />
-                                    <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-500">
-                                        Password
-                                    </label>
+                                <div className="w-72 bg-slate-50">
+                                    <div className="relative h-10 w-full min-w-[200px]">
+                                        <input
+                                            type="password"
+                                            className="peer h-full w-full rounded-[7px] border border-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                                            placeholder=" "
+                                            alue={formData.password}
+                                            name="password"
+                                            onChange={handleInputChange}
+                                        />
+                                        <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                                            Password
+                                        </label>
+                                    </div>
                                 </div>
                                 {/* Forgot */}
                                 <div className="flex mb-4">
@@ -282,6 +320,7 @@ const LoginForm = () => {
                                 {/* Buttons */}
                                 <div className="">
                                     <button
+                                        onClick={onLogin}
                                         type="button"
                                         className="text-[#FFDD5D] font-semibold bg-blue-900 px-10 py-2   border-2 rounded-xl w-full mt-2 border-solid hover:bg-blue-700"
                                     >
@@ -289,7 +328,10 @@ const LoginForm = () => {
                                     </button>
                                 </div>
                                 <div className="mt-4">
-                                    <div className="flex justify-center gap-3" onClick={() => login()}>
+                                    <div
+                                        className="flex justify-center gap-3"
+                                        onClick={() => login()}
+                                    >
                                         <div className="flex justify-center items-center bg-blue-900 px-4 py-2 w-full rounded-lg text-[#FFDD5D] font-semibold hover:bg-blue-800">
                                             <i className="fab fa-google"></i>
                                             &nbsp; Google
