@@ -68,6 +68,7 @@ class LoginView(APIView):
             raise AuthenticationFailed("Invalid Password")
 
         content = create_tokens(user)
+        
 
         return Response(content, status=status.HTTP_200_OK)
 

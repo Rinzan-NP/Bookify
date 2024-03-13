@@ -2,8 +2,10 @@ import React from "react";
 import "../Sidebar/SideBar.css";
 import MobileNav from "./MobileNav";
 import { Link, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const SideNavBar = () => {
+    const user = useSelector((state) => state.auth);
     
     return (
         <>
@@ -84,7 +86,7 @@ const SideNavBar = () => {
                             </svg>
                         </div>
                         <div className="font-bold text-2xl handlee-regular flex justify-center items-center ml-6 ">
-                            <span className="">Rinzan</span>
+                            <span className="">{user.user}</span>
                         </div>
                     </Link>
                 </div>

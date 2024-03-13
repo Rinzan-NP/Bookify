@@ -10,27 +10,14 @@ import Postes from "../../components/Posts/Postes";
 import { useSelector } from "react-redux";
 
 const Home = () => {
-    const user = useSelector((state) => state.auth);
-    console.log(user);
-    const [data, setdata] = useState({});
-    useEffect(() => {
-        fetchData();
-    });
-
-    const fetchData = async () => {
-        try {
-            const response = await axios.get("http://127.0.0.1:8000/api/home/");
-            if (response.status == 200) {
-                setdata(response);
-            }
-        } catch (error) {}
-    };
+    
+   
     return (
         <>
             <TopBar />
             <div className="flex px-14 py-12 side ">
                 <div>
-                    <SideNavBar name={data.name} />
+                    <SideNavBar />
                 </div>
                 <div
                     className="middle-box border-black border-4 p-5 rounded-xl w-8/12"

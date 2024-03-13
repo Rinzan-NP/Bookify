@@ -43,6 +43,7 @@ const LoginForm = () => {
                         data
                     );
                     if (response.status == 200) {
+                        setData(response.access, response.refresh);
                         navigate("/");
                     }
                 }
@@ -58,17 +59,24 @@ const LoginForm = () => {
                 formData
             );
             if (response.status === 200) {
-                dispatch(
-                    setUser({
-                        user: "Rinzan",
-                        admin: true,
-                    })
-                );
+              
+                setData(response.data.access, response.data.refresh);
                 navigate("/");
             }
         } catch (error) {
             console.log(error);
         }
+    };
+    const setData = (access, refresh) => {
+        console.log(access, refresh);
+        localStorage.setItem("access", access);
+        localStorage.setItem("refresh", refresh);
+        dispatch(
+            setUser({
+                user: "Rinzan",
+                admin: true,
+            })
+        );
     };
 
     return (
