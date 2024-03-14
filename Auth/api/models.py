@@ -59,18 +59,6 @@ class User(AbstractBaseUser, BaseModel):
         return True
 
 
-class BackgroundImage(models.Model):
-    name = models.CharField(max_length=50, null=True, blank=True)
-    image = models.ImageField(upload_to="background/")
 
-    def __str__(self) -> str:
-        return self.name
-
-class Post(BaseModel):
-    post = models.CharField(max_length=50)
-    background = models.ForeignKey(BackgroundImage, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    blocked = models.BooleanField(default=False)
-    caption = models.CharField(max_length=100, null=True, blank=True)
 
 
