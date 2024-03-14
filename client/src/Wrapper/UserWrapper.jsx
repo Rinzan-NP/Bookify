@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import {
     SignUp,
     Login,
@@ -10,21 +10,19 @@ import {
     Profile,
 } from "../pages/index";
 import ProtectedRoute from "../utils/UserProtectedRoute";
-import PubRoute from "../utils/UserLoginRoutes";
 import UserLoginRoutes from "../utils/UserLoginRoutes";
 
 const UserWrapper = () => {
     return (
         <Routes>
             <Route
-                exact
                 path="/"
                 element={
                     <ProtectedRoute>
                         <Home />
                     </ProtectedRoute>
                 }
-            ></Route>
+            />
             <Route
                 path="/login"
                 element={
@@ -33,9 +31,8 @@ const UserWrapper = () => {
                     </UserLoginRoutes>
                 }
             />
-            <Route exact path="/user/verify/:userId" element={<Verify />} />
+            <Route path="/user/verify/:userId" element={<Verify />} />
             <Route
-                exact
                 path="/register/"
                 element={
                     <UserLoginRoutes>
@@ -43,9 +40,7 @@ const UserWrapper = () => {
                     </UserLoginRoutes>
                 }
             />
-
             <Route
-                exact
                 path="/notification/"
                 element={
                     <ProtectedRoute>
@@ -54,7 +49,6 @@ const UserWrapper = () => {
                 }
             />
             <Route
-                exact
                 path="/message/"
                 element={
                     <ProtectedRoute>
@@ -63,7 +57,6 @@ const UserWrapper = () => {
                 }
             />
             <Route
-                exact
                 path="/profile/"
                 element={
                     <ProtectedRoute>

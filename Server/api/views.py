@@ -96,3 +96,6 @@ class GoogleLoginView(APIView):
 
         content = create_tokens(user)
         return Response(content, status=status.HTTP_200_OK)
+
+class AddPostView(APIView):
+    pass

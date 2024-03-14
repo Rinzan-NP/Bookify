@@ -73,3 +73,4 @@ class Post(BaseModel):
     blocked = models.BooleanField(default=False)
     caption = models.CharField(max_length=100, null=True, blank=True)
 
+

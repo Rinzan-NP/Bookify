@@ -7,7 +7,7 @@ const UserLoginRoutes = ({ children }) => {
     
     
     if (user.authenticated === false) {
-        setLoading(false);
+        
         return children;
     } else {
         return <Navigate to="/" />;

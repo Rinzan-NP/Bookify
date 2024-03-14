@@ -43,7 +43,7 @@ const LoginForm = () => {
                         data
                     );
                     if (response.status == 200) {
-                        setData(response.access, response.refresh);
+                        setData(response.data.access, response.data.refresh);
                         navigate("/");
                     }
                 }
