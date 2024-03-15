@@ -8,8 +8,8 @@ const UserProfile = () => {
                 <div className="user-details flex gap-4 border-b-2 border-black profile-pic">
                     <div className="w-40 h-40 profile-pic">
                         <svg
-                            width="inherit"
-                            height="inherit"
+                            width=""
+                            height=""
                             viewBox="0 0 250 250"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
@@ -83,8 +83,8 @@ const UserProfile = () => {
                             <div className="flex items-center gap-3">
                                 <div className="mobile-profile h-20 w-20">
                                     <svg
-                                        width="inherit"
-                                        height="inherit"
+                                        width=""
+                                        height=""
                                         viewBox="0 0 250 250"
                                         fill="none"
                                         xmlns="http://www.w3.org/2000/svg"

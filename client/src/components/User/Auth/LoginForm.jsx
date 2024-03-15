@@ -43,7 +43,11 @@ const LoginForm = () => {
                         data
                     );
                     if (response.status == 200) {
-                        setData(response.data.access, response.data.refresh);
+                        setData(
+                            response.data.access,
+                            response.data.refresh,
+                            response.data.user
+                        );
                         navigate("/");
                     }
                 }
@@ -59,22 +63,27 @@ const LoginForm = () => {
                 formData
             );
             if (response.status === 200) {
-              
-                setData(response.data.access, response.data.refresh);
+                setData(
+                    response.data.access,
+                    response.data.refresh,
+                    response.data.user
+                );
                 navigate("/");
             }
         } catch (error) {
             console.log(error);
         }
     };
-    const setData = (access, refresh) => {
-        console.log(access, refresh);
+    const setData = (access, refresh, user) => {
+        
         localStorage.setItem("access", access);
         localStorage.setItem("refresh", refresh);
         dispatch(
             setUser({
-                user: "Rinzan",
-                admin: true,
+                user: user.username,
+                admin: user.isAdmin,
+                email: user.email,
+                id: user.id,
             })
         );
     };

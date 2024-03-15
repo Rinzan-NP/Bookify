@@ -30,13 +30,20 @@ class RegisterView(CreateAPIView):
 def create_tokens(user):
 
     refresh = RefreshToken.for_user(user)
-
+    
     refresh["username"] = str(user.username)
     refresh["is_superuser"] = user.is_superuser
+    user_detail = {
+        "id": user.id,
+        "username": user.username,
+        "email": user.email,
+        "isAdmin": user.is_superuser,
+    }
+    
     content = {
         "refresh": str(refresh),
         "access": str(refresh.access_token),
-        "isAdmin": user.is_superuser,
+        "user": user_detail,
     }
     return content
 
@@ -44,11 +51,9 @@ def create_tokens(user):
 class LoginView(APIView):
     def post(self, request):
 
-       
-
         email = request.data.get("email")
         password = request.data.get("password")
-        
+
         if not email or not password:
             raise ParseError("All Fields Are Required")
 
@@ -68,7 +73,6 @@ class LoginView(APIView):
             raise AuthenticationFailed("Invalid Password")
 
         content = create_tokens(user)
-        
 
         return Response(content, status=status.HTTP_200_OK)
 
@@ -96,6 +100,3 @@ class GoogleLoginView(APIView):
 
         content = create_tokens(user)
         return Response(content, status=status.HTTP_200_OK)
-
-class AddPostView(APIView):
-    pass

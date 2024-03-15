@@ -24,7 +24,7 @@ const updateUserToken = async () => {
 
 const isAuthUser = async () => {
     const accessToken = localStorage.getItem("access");
-    console.log(accessToken);
+
     if (!accessToken) {
         return { name: null, isAuthenticated: false };
     }

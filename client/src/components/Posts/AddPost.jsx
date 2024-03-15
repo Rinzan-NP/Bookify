@@ -1,6 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 const AddPost = () => {
+    const [Quote, setQuote] = useState("");
+    const user = useSelector((state) => state.auth);
+    const user_detail = {
+        user_id: user.id,
+        username: user.user,
+        email: user.email,
+    };
+
+    const baseUrl = "http://127.0.0.1:8001";
+    const handlePost = async () => {
+        try {
+            const response = await axios.post( "http://127.0.0.1:8001/api/posts/", {
+                Quote,user_detail
+            });
+            console.log(response);
+        } catch (error) {
+            console.error(error);
+        }
+    };
     return (
         <>
             <div className="mb-4">
@@ -25,6 +46,8 @@ const AddPost = () => {
                                 type="text"
                                 className="border-2 border-black w-full rounded-xl h-full px-3"
                                 placeholder="QUOTE"
+                                value={Quote}
+                                onChange={(e) => setQuote(e.target.value)}
                             />
                         </div>
                     </div>
@@ -79,7 +102,10 @@ const AddPost = () => {
                                     Post Later
                                 </span>
                             </div>
-                            <div className="bg-black rounded-3xl py-2 px-5 text-white text-sm font-semibold">
+                            <div
+                                className="bg-black rounded-3xl py-2 px-5 text-white text-sm font-semibold"
+                                onClick={handlePost}
+                            >
                                 Post
                             </div>
                         </div>
