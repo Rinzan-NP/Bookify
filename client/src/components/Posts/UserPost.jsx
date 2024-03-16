@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import Carousel from "./Carousel";
 
 const UserPost = (props) => {
-    const {user,email,images} = props;
-    
+    const {user,images,content,likes} = props;
+    console.log(content);
     
     return (
         <>
-            <div className="md:p-4 bg-[#fefff0]  border-solid border-b-2 border-gray-600 pb-7">
-                <div className="flex gap-4 mb-3">
-                    <div>
+            <div className="md:p-4 bg-[#fefff0]  border-solid border-b-2 border-gray-600 pb-7 mt-3">
+                <div className="flex gap-4 mb-3 ">
+                    <div >
                         <svg
                             width="75"
                             height="75"
@@ -83,23 +83,21 @@ const UserPost = (props) => {
                     </div>
                     <div className="flex justify-center items-center">
                         <div className="flex-row ">
-                            <p className="text-gray-800 font-extrabold">Cole</p>
+                            <p className="text-gray-800 font-extrabold">{user.username}</p>
                             <a
                                 href=""
                                 className="text-gray-600 font-bold -mt-1"
                             >
-                                @rinzan
+                                @{user.email}
                             </a>
                         </div>
                     </div>
                 </div>
                 <Carousel
-                    images={[
-                        "https://i.imgur.com/HMtYKoZ_d.jpg?maxwidth=520&shape=thumb&fidelity=high",
-                        "https://i.imgur.com/DS04Tur_d.jpg?maxwidth=520&shape=thumb&fidelity=high",
-                    ]}
+                    images={[images.background_image]}
+                    content={content}
                 />
-                <div className="post-reactions mt-4">
+                <div className="post-reactions mb-4 mt-7">
                     <div className="flex justify-between">
                         <div className="flex gap-6">
                             <div>

@@ -5,22 +5,27 @@ import MobileNav from "../../components/Sidebar/MobileNav";
 import AddPost from "../../components/Posts/AddPost";
 import Admires from "../../components/RightSideBar/Admires";
 import UserPost from "../../components/Posts/UserPost";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Home = () => {
+    const [data, setData] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://127.0.0.1:8001/api/posts/");
+                const response = await axios.get(
+                    "http://127.0.0.1:8001/api/get/posts/"
+                );
                 if (response.status === 200) {
-                    console.log(response.data);
+                    setData(response.data);
                 }
             } catch (error) {
-                
+                console.error(error);
             }
-        }
-        fetchData()
-    })
+        };
+        fetchData();
+    }, []);
+
     return (
         <>
             <TopBar />
@@ -36,7 +41,15 @@ const Home = () => {
                         <AddPost />
                     </div>
                     <div>
-                        <UserPost />
+                        {data.map((post, index) => (
+                            <UserPost
+                                key={index}
+                                user={post.user}
+                                images={post.background_image}
+                                content={post.content}
+                                likes={post.likes}
+                            />
+                        ))}
                     </div>
                 </div>
                 <div className="w-3/12 right-side-hide">

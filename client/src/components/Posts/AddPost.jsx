@@ -17,7 +17,7 @@ const AddPost = () => {
             const response = await axios.post( "http://127.0.0.1:8001/api/posts/", {
                 Quote,user_detail
             });
-            console.log(response);
+            alert("Post added successfully");
         } catch (error) {
             console.error(error);
         }
@@ -27,7 +27,7 @@ const AddPost = () => {
             <div className="mb-4">
                 <div className="border-black border-2 p-3 rounded-xl bg-gray-200">
                     <div className="bg-white p-3 rounded-xl flex gap-4">
-                        <div className="bg-black h-16 w-16 rounded-xl p-5 flex items-center justify-center ">
+                        <div className="bg-black h-16 w-16 rounded-xl p-5 flex items-center justify-center " onClick={handlePost}>
                             <svg
                                 width="36"
                                 height="49"
