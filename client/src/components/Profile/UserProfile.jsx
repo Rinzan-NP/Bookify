@@ -1,7 +1,8 @@
 import React from "react";
 import "./Profile.css";
 import UserPost from "./UserPost";
-const UserProfile = () => {
+const UserProfile = (props) => {
+    const { posts, admires, admire } = props;
     return (
         <>
             <div className="border-solid border-4 border-black rounded-2xl md:p-7 md:py-8 bg-[#FEFFF0] py-4 p-3">
@@ -189,9 +190,8 @@ const UserProfile = () => {
                         </div>
                     </div>
                 </div>
-                <UserPost />
+                <UserPost posts={posts} />
             </div>
-            
         </>
     );
 };

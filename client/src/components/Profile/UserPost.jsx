@@ -1,7 +1,7 @@
 import React from "react";
 import "./Profile.css";
 
-const UserPost = () => {
+const UserPost = (props) => {
     // Dummy data for demonstration, replace it with your actual post data
     const posts = [
         {

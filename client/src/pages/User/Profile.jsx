@@ -42,7 +42,7 @@ const Profile = () => {
                 </div>
 
                 <div className="w-full" id="middle_boxes">
-                    <UserProfile />
+                    <UserProfile posts={data.posts} admires={data.admires} admire={data.admire}/>
                 </div>
             </div>
 
