@@ -13,7 +13,7 @@ const Profile = () => {
             const accessToken = localStorage.getItem("access");
             try {
                 const response = await axios.get(
-                    "http://127.0.0.1:8001/api/get/user/",
+                    "http://127.0.0.1:8002/api/get/user/",
                     {
                         headers: {
                             Authorization: `Bearer ${accessToken}`, // Fixed variable name
@@ -23,6 +23,7 @@ const Profile = () => {
                     }
                 );
                 if (response.status === 200) {
+                    console.log(response);
                     setData(response.data);
                 }
             } catch (error) {

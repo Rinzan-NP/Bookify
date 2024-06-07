@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Profile.css";
+import axios from "axios";
 
 const UserPost = (props) => {
     // Dummy data for demonstration, replace it with your actual post data
+    useEffect(() => {
+       try {
+        const fetchData = async () => {
+            const resposne = await axios.get()
+        }}
+        catch (error) {
+        
+       } 
+    },[])
     const posts = [
         {
             id: 1,

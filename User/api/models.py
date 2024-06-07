@@ -10,6 +10,20 @@ class BaseModel(models.Model):
     class Meta:
         abstract = True
 
+class User(models.Model):
+    id = models.CharField(max_length=50,primary_key=True)
+    username= models.CharField(max_length=50)
+
+    @property
+    def following(self):
+        return UserProfile.objects.filter(followed_by=self).count()
+
+    @property
+    def followers(self):
+        return UserProfile.objects.filter(following=self).count()
 
 
+class UserProfile(BaseModel):
+    following = models.ForeignKey(User, on_delete=models.CASCADE, related_name="following")
+    followed_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="followed_by")
 
