@@ -4,23 +4,20 @@ import TopBar from "../../components/User/TopBar/TopBar";
 import SideNavBar from "../../components/Sidebar/SideNavBar";
 import MobileNav from "../../components/Sidebar/MobileNav";
 import UserProfile from "../../components/Profile/UserProfile";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 const Profile = () => {
+    const { username } = useParams();
     const [data, setData] = useState({});
 
     useEffect(() => {
         const fetchData = async () => {
-            const accessToken = localStorage.getItem("access");
             try {
                 const response = await axios.get(
-                    "http://127.0.0.1:8002/api/get/user/",
-                    {
-                        headers: {
-                            Authorization: `Bearer ${accessToken}`, // Fixed variable name
-                            Accept: "application/json",
-                            "Content-Type": "application/json",
-                        },
-                    }
+                    `http://127.0.0.1:8000/api/get/user/${
+                        username + "@gmail.com"
+                    }`
                 );
                 if (response.status === 200) {
                     console.log(response);
@@ -43,7 +40,12 @@ const Profile = () => {
                 </div>
 
                 <div className="w-full" id="middle_boxes">
-                    <UserProfile posts={data.posts} admires={data.admires} admire={data.admire}/>
+                    <UserProfile
+                        username={username}
+                        posts={data.posts}
+                        admires={data.followers_count}
+                        admiring={data.following_count}
+                    />
                 </div>
             </div>
 

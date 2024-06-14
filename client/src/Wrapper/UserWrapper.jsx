@@ -57,7 +57,7 @@ const UserWrapper = () => {
                 }
             />
             <Route
-                path="/profile/"
+                path="/profile/:username"
                 element={
                     <ProtectedRoute>
                         <Profile />

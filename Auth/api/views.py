@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework.generics import CreateAPIView
 from rest_framework.exceptions import ParseError, AuthenticationFailed
 from rest_framework import status
@@ -100,3 +101,12 @@ class GoogleLoginView(APIView):
 
         content = create_tokens(user)
         return Response(content, status=status.HTTP_200_OK)
+
+
+#profile
+
+class ProfileView(APIView):
+    def get(self, request,email):
+        user = get_object_or_404(User, email=email)
+        serializer = ProfileSerializer(user)
+        return Response(serializer.data, status=status.HTTP_200_OK)

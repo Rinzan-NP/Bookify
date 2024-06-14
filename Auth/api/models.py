@@ -58,6 +58,10 @@ class User(AbstractBaseUser, BaseModel):
     def has_module_perms(self, add_label):
         return True
 
+class Admire(BaseModel):
+    following = models.ForeignKey(User, on_delete=models.CASCADE, related_name="following")
+    followed_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="followed_by")
+    
 
 
 

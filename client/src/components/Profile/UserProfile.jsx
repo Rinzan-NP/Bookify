@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Profile.css";
 import UserPost from "./UserPost";
 const UserProfile = (props) => {
-    const { posts, admires, admire } = props;
+    const { posts, admires, admiring , username} = props;
+
+    useEffect
     return (
         <>
             <div className="border-solid border-4 border-black rounded-2xl md:p-7 md:py-8 bg-[#FEFFF0] py-4 p-3">
@@ -155,7 +157,7 @@ const UserProfile = (props) => {
                                     </svg>
                                 </div>
                                 <p className="handlee-regular font-bold text-2xl">
-                                    Rinzan
+                                    {username}
                                 </p>
                             </div>
                             <div className="flex items-center">
@@ -172,13 +174,13 @@ const UserProfile = (props) => {
                             <div className="bg-[#FFDC58] py-2 px-4 rounded-xl handlee-regular">
                                 <p className=" font-bold text-lg ">Admires</p>
                                 <p className="font-bold text-base text-center leading-4">
-                                    359
+                                    {admires}
                                 </p>
                             </div>
                             <div className="bg-[#FFDC58] py-2 px-4 rounded-xl handlee-regular">
                                 <p className=" font-bold text-lg ">Admiring</p>
                                 <p className="font-bold text-base text-center leading-4">
-                                    413
+                                    {admiring}
                                 </p>
                             </div>
                             <div className="bg-[#FFDC58] py-2 px-4 rounded-xl handlee-regular">

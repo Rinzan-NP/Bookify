@@ -6,13 +6,14 @@ import { useSelector } from "react-redux";
 
 const SideNavBar = () => {
     const user = useSelector((state) => state.auth);
+    const username = user.email.split("@")[0];
     
     return (
         <>
             {/* Pcs and tab */}
             <div className="bg-[#fefff0]  border-solid border-4 border-black paddings rounded-2xl pades mobile-hide ">
                 <div className="pc">
-                    <Link to="/profile" className="flex">
+                    <Link to={`/profile/${username}`} className="flex">
                         <div className="">
                             <svg
                                 width="75"
