@@ -1,15 +1,13 @@
 import React, { useEffect } from "react";
-import Carousel from "./Carousel";
 
 const UserPost = (props) => {
-    const {user,images,content,likes} = props;
-    console.log(content);
-    
+    const { user, backgroundImage, content, likes } = props;
+
     return (
         <>
             <div className="md:p-4 bg-[#fefff0]  border-solid border-b-2 border-gray-600 pb-7 mt-3">
                 <div className="flex gap-4 mb-3 ">
-                    <div >
+                    <div>
                         <svg
                             width="75"
                             height="75"
@@ -83,7 +81,9 @@ const UserPost = (props) => {
                     </div>
                     <div className="flex justify-center items-center">
                         <div className="flex-row ">
-                            <p className="text-gray-800 font-extrabold">{user.username}</p>
+                            <p className="text-gray-800 font-extrabold">
+                                {user.username}
+                            </p>
                             <a
                                 href=""
                                 className="text-gray-600 font-bold -mt-1"
@@ -93,10 +93,16 @@ const UserPost = (props) => {
                         </div>
                     </div>
                 </div>
-                <Carousel
+                {/* <Carousel
                     images={[images.background_image]}
                     content={content}
-                />
+                /> */}
+                <div
+                    className="w-100 h-72 flex items-center justify-center rounded-xl border-2 border-black p-3"
+                    style={{ backgroundImage: `url(${backgroundImage})` }}
+                >
+                    <p style={{fontFamily : "Handlee"}} className="text-2xl text-center ">{content}</p>
+                </div>
                 <div className="post-reactions mb-4 mt-7">
                     <div className="flex justify-between">
                         <div className="flex gap-6">

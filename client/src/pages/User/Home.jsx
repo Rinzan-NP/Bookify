@@ -17,6 +17,7 @@ const Home = () => {
                     "http://127.0.0.1:8001/api/get/posts/"
                 );
                 if (response.status === 200) {
+                    console.log(response.data);
                     setData(response.data);
                 }
             } catch (error) {
@@ -45,7 +46,7 @@ const Home = () => {
                             <UserPost
                                 key={index}
                                 user={post.user}
-                                images={post.background_image}
+                                backgroundImage={post.background_image.background_image}
                                 content={post.content}
                                 likes={post.likes}
                             />
