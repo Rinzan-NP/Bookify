@@ -25,7 +25,6 @@ const authSlice = createSlice({
             state.authenticated = false;
             state.email = null;
             state.id = null;
-            
         },
     },
 });

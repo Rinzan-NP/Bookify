@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework import generics
-from .serializers import PostSerializer
+from .serializers import PostSerializer, ProfilePostSerializer
 
 from .models import Post, UserProfile
 
@@ -29,6 +29,14 @@ class PostCreateView(APIView):
         serializer = PostSerializer(post)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+
 class PostListView(generics.ListAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+
+
+class ProfilePostView(APIView):
+    def get(self, request, email):
+        posts = Post.objects.filter(user__email=email)
+        serializer = ProfilePostSerializer(posts, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

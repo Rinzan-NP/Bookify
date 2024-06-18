@@ -20,7 +20,6 @@ const Profile = () => {
                     }`
                 );
                 if (response.status === 200) {
-                    console.log(response);
                     setData(response.data);
                 }
             } catch (error) {
@@ -42,7 +41,6 @@ const Profile = () => {
                 <div className="w-full" id="middle_boxes">
                     <UserProfile
                         username={username}
-                        posts={data.posts}
                         admires={data.followers_count}
                         admiring={data.following_count}
                     />

@@ -29,5 +29,3 @@ class Post(BaseModel):
     )
     likes = models.IntegerField(default=0)
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-
-

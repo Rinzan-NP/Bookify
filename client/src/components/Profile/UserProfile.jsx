@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import "./Profile.css";
 import UserPost from "./UserPost";
 const UserProfile = (props) => {
-    const { posts, admires, admiring , username} = props;
+    const {admires, admiring , username} = props;
+    const [Noposts, setNoPosts] = useState(0);
 
-    useEffect
+
     return (
         <>
             <div className="border-solid border-4 border-black rounded-2xl md:p-7 md:py-8 bg-[#FEFFF0] py-4 p-3">
@@ -186,13 +187,13 @@ const UserProfile = (props) => {
                             <div className="bg-[#FFDC58] py-2 px-4 rounded-xl handlee-regular">
                                 <p className=" font-bold text-lg ">Posts</p>
                                 <p className="font-bold text-base text-center leading-4">
-                                    13
+                                    {Noposts}
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <UserPost posts={posts} />
+                <UserPost setNoPosts={setNoPosts} username={username}/>
             </div>
         </>
     );
