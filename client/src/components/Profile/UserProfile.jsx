@@ -57,13 +57,18 @@ const UserProfile = (props) => {
             console.log(response);
             if (response.status == 200) {
                 setFollow(!follow);
-                setData({ ...data, following: data.following + 1 });
+                let newCount = 0;
+                if (response.data.message == "Followed") {
+                    newCount = data.followers_count + 1;
+                } else {
+                    newCount = data.followers_count - 1;
+                }
+                setData({ ...data, followers_count: newCount });
             }
         } catch (error) {
             console.log(error);
         }
     };
-    
 
     return (
         <>
@@ -218,13 +223,12 @@ const UserProfile = (props) => {
                                     </p>
                                 </div>
                                 <div className="flex items-center">
-                                    {loginUser.email !=
-                                        data.email + "@gmail.com" && (
+                                    {loginUser.email != data.email && (
                                         <button
                                             className="py-2 px-5 handlee-regular bg-gray-800 text-white rounded-xl"
                                             onClick={onFollow}
                                         >
-                                            {follow ? "Follow" : "Unfollow"}
+                                            {follow ? "Unfollow" : "Follow"}
                                         </button>
                                     )}
                                 </div>
