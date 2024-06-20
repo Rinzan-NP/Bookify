@@ -10,11 +10,13 @@ const updateUserToken = async () => {
             refresh: refreshToken,
         });
         if (res.status === 200) {
+            console.log(res);
             localStorage.setItem("access", res.data.access);
             localStorage.setItem("refresh", res.data.refresh);
             const decoded = jwtDecode(res.data.access);
             return { name: decoded.username, isAuthenticated: true };
         } else {
+            console.log(res);
             return { name: null, isAuthenticated: false };
         }
     } catch (error) {
@@ -32,8 +34,10 @@ const isAuthUser = async () => {
     let decoded = jwtDecode(accessToken);
 
     if (decoded.exp > currentTime) {
+        console.log("exipry kuuduthal");
         return { name: decoded.username, isAuthenticated: true };
     } else {
+        console.log("update pooyi");
         const updateSuccess = await updateUserToken();
         return updateSuccess;
     }

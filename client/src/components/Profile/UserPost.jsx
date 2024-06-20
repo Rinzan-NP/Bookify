@@ -11,9 +11,7 @@ const UserPost = (props) => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(
-                    `http://127.0.0.1:8001/api/get/userposts/${
-                        username + "@gmail.com"
-                    }`
+                    `http://127.0.0.1:8001/api/get/userposts/${username}`
                 );
                 if (response.status == 200) {
                     console.log(response.data);
@@ -44,7 +42,8 @@ const UserPost = (props) => {
                         width: "100%",
                     }}
                 >
-                    <p className="text-[#252525] "
+                    <p
+                        className="text-[#252525] "
                         style={{
                             position: "absolute",
                             top: "50%",

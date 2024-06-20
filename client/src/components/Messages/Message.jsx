@@ -6,8 +6,8 @@ const Message = () => {
             <div className="flex gap-5 mb-2">
                 <div className="profile">
                     <svg
-                        width="50"
-                        height="50"
+                        width="50px"
+                        height="50px"
                         viewBox="0 0 100 100"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -19,14 +19,14 @@ const Message = () => {
                             maskUnits="userSpaceOnUse"
                             x="12"
                             y="15"
-                            width="75"
-                            height="71"
+                            width="75px"
+                            height="71px"
                         >
                             <rect
                                 x="12"
                                 y="17.7463"
-                                width="72.4821"
-                                height="67.8273"
+                                width="72.4821px"
+                                height="67.8273px"
                                 transform="rotate(-2.17145 12 17.7463)"
                                 fill="#D9D9D9"
                             />

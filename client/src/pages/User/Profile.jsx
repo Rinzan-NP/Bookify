@@ -9,26 +9,10 @@ import { useParams } from "react-router-dom";
 
 const Profile = () => {
     const { username } = useParams();
-    const [data, setData] = useState({});
+   
+    
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(
-                    `http://127.0.0.1:8000/api/get/user/${
-                        username + "@gmail.com"
-                    }`
-                );
-                if (response.status === 200) {
-                    setData(response.data);
-                }
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        fetchData();
-    }, []);
+    
 
     return (
         <>
@@ -40,9 +24,13 @@ const Profile = () => {
 
                 <div className="w-full" id="middle_boxes">
                     <UserProfile
-                        username={username}
-                        admires={data.followers_count}
-                        admiring={data.following_count}
+                        email={username}
+                        // username={data.username}
+                        // admires={data.followers_count}
+                        // admires = {0}
+                        // admiring={data.following_count}
+                        // following={data.following}
+                       
                     />
                 </div>
             </div>

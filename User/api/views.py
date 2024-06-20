@@ -8,6 +8,8 @@ from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 from .utils import send_account_activation_email
 from .serializers import *
+from rest_framework.permissions import IsAuthenticated
+from .models import Admire
 
 
 class RegisterView(CreateAPIView):
@@ -31,7 +33,7 @@ class RegisterView(CreateAPIView):
 def create_tokens(user):
 
     refresh = RefreshToken.for_user(user)
-    
+
     refresh["username"] = str(user.username)
     refresh["is_superuser"] = user.is_superuser
     user_detail = {
@@ -40,7 +42,7 @@ def create_tokens(user):
         "email": user.email,
         "isAdmin": user.is_superuser,
     }
-    
+
     content = {
         "refresh": str(refresh),
         "access": str(refresh.access_token),
@@ -103,10 +105,40 @@ class GoogleLoginView(APIView):
         return Response(content, status=status.HTTP_200_OK)
 
 
-#profile
+# profile
+
 
 class ProfileView(APIView):
-    def get(self, request,email):
-        user = get_object_or_404(User, email=email)
-        serializer = ProfileSerializer(user)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, email):
+        profile_user = get_object_or_404(User, email=email)
+        following = Admire.objects.filter(
+            following=request.user, followed_by=profile_user
+        ).exists()
+
+        serializer = ProfileSerializer(profile_user)
+        response = serializer.data
+        response["following"] = following
+        return Response(response, status=status.HTTP_200_OK)
+    
+class FollowView(APIView):
+    permission_classes = [IsAuthenticated]
+    def post(self, request, email):
+        print(request.user)
+        profile_user = get_object_or_404(User, email=email)
+        following = Admire.objects.filter(
+            following=request.user, followed_by=profile_user
+        ).exists()
+        if following:
+            Admire.objects.filter(
+                following=request.user, followed_by=profile_user
+            ).delete()
+            return Response({"message":"Unfollowed"},status=status.HTTP_200_OK)
+        else:
+            Admire.objects.create(
+                following=request.user, followed_by=profile_user
+            )
+            return Response({"message":"Followed"},status=status.HTTP_200_OK)
+        
+

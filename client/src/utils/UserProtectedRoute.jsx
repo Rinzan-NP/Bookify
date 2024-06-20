@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
-import isAuthUser from "./IsAuthUser";
 import { useDispatch } from "react-redux";
+import isAuthUser from "./IsAuthUser";
 import { logout } from "../Redux/Authentication/UserSlice";
 
 function PrivateRoute({ children }) {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(false); // Set initial state to false
     const [isLoading, setLoading] = useState(true);
     const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchData = async () => {
-            const authInfo = await isAuthUser();
-
-            setIsAuthenticated(authInfo.isAuthenticated);
-            setLoading(false);
+            try {
+                const authInfo = await isAuthUser();
+                console.log("auth info :" + authInfo.isAuthenticated);
+                setIsAuthenticated(authInfo.isAuthenticated);
+            } catch (error) {
+                console.error("Failed to fetch authentication info:", error);
+            } finally {
+                setLoading(false);
+            }
         };
 
         fetchData();
@@ -32,7 +37,7 @@ function PrivateRoute({ children }) {
     }
 
     // If authenticated, render the child components
-    return children;
+    return <>{children}</>;
 }
 
 export default PrivateRoute;

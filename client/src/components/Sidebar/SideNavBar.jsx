@@ -16,15 +16,15 @@ const SideNavBar = () => {
                     <Link to={`/profile/${username}`} className="flex">
                         <div className="">
                             <svg
-                                width="75"
-                                height="75"
+                                width="75px"
+                                height="75px"
                                 viewBox="0 0 100 100"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                             >
                                 <rect
-                                    width="100"
-                                    height="100"
+                                    width="100px"
+                                    height="100px"
                                     rx="50"
                                     fill="#FFDD5D"
                                 />
@@ -34,14 +34,14 @@ const SideNavBar = () => {
                                     maskUnits="userSpaceOnUse"
                                     x="12"
                                     y="15"
-                                    width="75"
-                                    height="71"
+                                    width="75px"
+                                    height="71px"
                                 >
                                     <rect
                                         x="12"
                                         y="17.7463"
-                                        width="72.4821"
-                                        height="67.8273"
+                                        width="72.4821px"
+                                        height="67.8273px"
                                         transform="rotate(-2.17145 12 17.7463)"
                                         fill="#D9D9D9"
                                     />
