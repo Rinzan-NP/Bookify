@@ -37,6 +37,7 @@ const UserProfile = (props) => {
             }
         };
 
+        
         fetchData();
     }, []);
 
