@@ -91,7 +91,7 @@ DATABASES = {
        'ENGINE': 'django.db.backends.postgresql',
        'NAME': 'Bookify_post',
        'USER': 'postgres',
-       'PASSWORD': 'root',
+       'PASSWORD': '2134',
        'HOST': 'localhost',
       
    }
