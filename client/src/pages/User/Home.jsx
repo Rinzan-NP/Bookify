@@ -14,7 +14,7 @@ const Home = () => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(
-                    "http://127.0.0.1:8001/api/get/posts/"
+                    "http://127.0.0.1:8000/api/get/posts/"
                 );
                 if (response.status === 200) {
                     console.log(response.data);

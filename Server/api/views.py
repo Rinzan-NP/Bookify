@@ -9,8 +9,8 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from .utils import send_account_activation_email
 from .serializers import *
 from rest_framework.permissions import IsAuthenticated
-from .models import Admire
-
+from .models import Admire, Post
+from rest_framework import generics
 
 class RegisterView(CreateAPIView):
     serializer_class = UserRegisterSerializer
@@ -142,3 +142,38 @@ class FollowView(APIView):
             return Response({"message":"Followed"},status=status.HTTP_200_OK)
         
 
+class PostCreateView(APIView):
+    def post(self, request):
+        data = request.data
+        user_data = data.get("user_detail")
+        quote = data.get("Quote")
+
+        # Check if user exists, if not, create one
+        user_id = user_data.get("user_id")
+        user, created = User.objects.get_or_create(
+            user_id=user_id,
+            defaults={
+                "username": user_data.get("username"),
+                "email": user_data.get("email"),
+            },
+        )
+
+        # Create post with the provided quote
+        post = Post.objects.create(content=quote, user=user)
+
+        serializer = PostSerializer(post)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+
+
+class PostListView(generics.ListAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+
+class ProfilePostView(APIView):
+    def get(self, request, email):
+        posts = Post.objects.filter(user__email=email)
+        serializer = ProfilePostSerializer(posts, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

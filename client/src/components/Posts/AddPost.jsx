@@ -11,10 +11,10 @@ const AddPost = () => {
         email: user.email,
     };
 
-    const baseUrl = "http://127.0.0.1:8001";
+    const baseUrl = "http://127.0.0.1:8000";
     const handlePost = async () => {
         try {
-            const response = await axios.post( "http://127.0.0.1:8001/api/posts/", {
+            const response = await axios.post( "http://127.0.0.1:8000/api/posts/", {
                 Quote,user_detail
             });
             alert("Post added successfully");

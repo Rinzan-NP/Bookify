@@ -63,6 +63,18 @@ class Admire(BaseModel):
     followed_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="followed_by")
     
 
+class BackgroundImage(models.Model):
+    name = models.CharField(max_length=50)
+    background_image = models.ImageField(upload_to="background/", null=True, blank=True)
+
+
+class Post(BaseModel):
+    content = models.TextField()
+    background_image = models.ForeignKey(
+        BackgroundImage, on_delete=models.CASCADE, null=True, blank=True,default = 1
+    )
+    likes = models.IntegerField(default=0)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 

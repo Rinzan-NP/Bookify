@@ -5,13 +5,13 @@ import axios from "axios";
 const UserPost = (props) => {
     const { username, setNoPosts } = props;
     const [Posts, setPosts] = useState([]);
-    const baseUrl = "http://127.0.0.1:8001/";
+    const baseUrl = "http://127.0.0.1:8000/";
     // Dummy data for demonstration, replace it with your actual post data
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(
-                    `http://127.0.0.1:8001/api/get/userposts/${username}`
+                    `http://127.0.0.1:8000/api/get/userposts/${username}`
                 );
                 if (response.status == 200) {
                     console.log(response.data);
